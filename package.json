@@ -1,0 +1,20 @@
+{
+  "name": "mvc-tech-blog",
+  "version": "1.0.0",
+  "description": "A blog style website where developers can create an account, edit info, post and comment.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flying-dink/mvc-tech-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flying-dink/mvc-tech-blog/issues"
+  },
+  "homepage": "https://github.com/Flying-dink/mvc-tech-blog#readme"
+}
