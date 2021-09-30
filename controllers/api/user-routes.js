@@ -56,4 +56,48 @@ router.get('/:id', (req,res)=> {
 });
 });
 
-router.post()
+router.post('/', (req,res) => {
+    User.create({
+        username: req.username,
+        email: req.body.email,
+        password: req.body.password
+    })
+    //send user data back to client
+    .then(dbUserData => {
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
+
+            res.json(dbUserData);
+        });
+    })
+    //If there is a server error, return error
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+router.post('/login', (req, res)=> {
+    User.findOne({
+        where: {
+            email: req.body.email 
+        }
+    })
+    .then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({message: 'NO user with thtat email address'});
+            return;
+        }
+        const validPassword = dbUserData.checkPassword(req.body.password);
+        if (!validPassword) {
+            res.status(400).json({message: 'Incorrect password'});
+            return;
+        }
+        req.session.save(() => {
+            //session variables
+            req.session.user_id = 
+        })
+    })
+})
