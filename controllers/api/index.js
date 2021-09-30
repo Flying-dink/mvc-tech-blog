@@ -1,4 +1,4 @@
-//an index file to gatehr the ApI routes abd export tehm for use
+//an index file to gather the ApI routes and export them for use
 
 //server connection
 
