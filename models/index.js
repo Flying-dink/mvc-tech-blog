@@ -8,7 +8,6 @@ const Comment = require('./comment');
 //Creates links between models
 User.hasMany(Post, {
     foreignKey: 'user_id'
-
 });
 Post.belongsTo(User, {
     foreignKey: 'user_id'

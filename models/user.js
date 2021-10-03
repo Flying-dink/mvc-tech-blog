@@ -63,4 +63,4 @@ User.init(
         modelName: 'user'
     }
 );
-modeule.exports = User;
+module.exports = User;
