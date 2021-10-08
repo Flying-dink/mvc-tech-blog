@@ -1,10 +1,10 @@
 //express. js connection
 const router= require('express').Router();
 const {User, Post, Comment} = require('../../models');
-const session = require('express-session');
+const session= require('express-session');
 const withAuth = require('../../utils/auth');
 //Sequelize store to save the session so that the user can stay loggen in
-const SequelizeStore = require('connect-session-sequelize') (session.Store);
+
 
 //Routes
 
@@ -31,7 +31,7 @@ router.get('/:id', (req,res)=> {
         include: [
            {
                model: Post,
-               attributes: ['id', 'title', 'post_text', 'created_at']
+               attributes: ['id', 'title', 'post_content', 'created_at']
     },
     {
         model: Comment,
@@ -59,7 +59,7 @@ router.get('/:id', (req,res)=> {
 
 router.post('/', (req,res) => {
     User.create({
-        username: req.username,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password
     })

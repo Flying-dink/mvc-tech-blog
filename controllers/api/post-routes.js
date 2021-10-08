@@ -10,7 +10,7 @@ router.get('/', (req,res) => {
     Post.findAll({
         attributes: [
             'id',
-            'post-text',
+            'post-content',
             'title',
             'created_at',
         ],
@@ -86,7 +86,7 @@ router.get('/:id',(req,res)=> {
  router.post('/', withAuth, (req,res)=> {
      Post.Create({
          title: req.body.title,
-         post_text: req.body.post_text,
+         post_content: req.body.post_content,
          user_id: req.session.user_id
      })
      .then(dbPostData => res.json(dbPostData))
@@ -97,14 +97,14 @@ router.get('/:id',(req,res)=> {
  });
  
  router.put('/:id', withAuth, (req,res) => {
-   Post.update(req.body,
+   Post.update(req.body,title,
     {
         where: {
             id: req.params.id
         }
     }
  )
- .then(dbPsotdata => {
+ .then(dbPostData => {
      if (!dbPostData) {
          res.status(404).json({ message: 'No post found with this id'});
          return;

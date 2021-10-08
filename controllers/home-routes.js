@@ -35,7 +35,7 @@ router.get('/', (req,res) => {
     })
     //creates an array for the posts using the get method
     .then(dbPostData => {
-        const posts = dbPostdata.map(post.get({plain: true}));
+        const posts = dbPostdata.map(post=>post. get({plain: true}));
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn

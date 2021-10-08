@@ -10,7 +10,7 @@ const { Post,User,Comment} = require('../models');
 //authorizes middleware to redirect unauthenticated users to the login page
 const withAuth = require('../utils/auth')
 
-//A route to render the dashboars page, for logged in user
+//A route to render the dashboard page, for logged in user
 router.get('/', withAuth, (req,res) => {
     Post.findAll({
         where: {
