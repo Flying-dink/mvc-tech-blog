@@ -1,115 +1,110 @@
+//
+
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post,User,Comment} = require('../models');
+const { Post, User, Comment } = require('../models');
 
-//Render the home page
-
-router.get('/', (req,res) => {
+router.get('/', (req, res) => {
+    console.log(req.session);
+    
     Post.findAll({
-//query configuration , from teh post table
-        attributes: [
-            'id',
-            'post_text',
-            'title',
-            'created_at',
-
-        ],
-
-        //order the posts from most recent to oldessst
-        order: [['created_at', 'DESC']],
-        //from teh user table, from teh comment table 
-        include: [
-            {
-                model: User,
-                attributes: ['username']
-            },
-            {
-                model: Comment,
-                attributes: ['id','comment_text', 'post_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
-        ]
+      attributes: [
+        'id',
+        'title',
+        'created_at',
+        'post_content'
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username', 'twitter', 'github']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username', 'twitter', 'github']
+        }
+      ]
     })
-    //creates an array for the posts using the get method
-    .then(dbPostData => {
-        const posts = dbPostdata.map(post=>post. get({plain: true}));
+      .then(dbPostData => {
+        const posts = dbPostData.map(post => post.get({ plain: true }));
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
-        });
-    })
-    .catch(err => {
+          });
+      })
+      .catch(err => {
+        console.log(err);
         res.status(500).json(err);
+      });
+  });
 
-    });
-});
-router.get('/post/:id',(req,res) => {
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('login');
+  });
+
+  router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('signup');
+  });
+
+  router.get('/post/:id', (req, res) => {
     Post.findOne({
-        where: {
-            id: req.params.id
+      where: {
+        id: req.params.id
+      },
+      attributes: [
+        'id',
+        'title',
+        'created_at',
+        'post_content'
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username', 'twitter', 'github']
+          }
         },
-        attributes: [
-            'id',
-            'post_text',
-            'title',
-            'created_at',
-
-
-        ],
-        include: [
-            {
-                model: User,
-                attributes: ['username']
-            },
-            {
-                model: Comment,
-               attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                include:{
-                    model: User,
-                    attributes: ['username']
-                }
-
-            }
-        ]
-    })
-    .then(dbPostData => {
-        //if no post with that id exists, return an error
-        if (!dbPostData) {
-            res.status(404).json({message: 'No post found with this id'});
-            return;
+        {
+          model: User,
+          attributes: ['username', 'twitter', 'github']
         }
-        const post = dbPostData.get({plain: true});
+      ]
+    })
+      .then(dbPostData => {
+        if (!dbPostData) {
+          res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+  
+        // serialize the data
+        const post = dbPostData.get({ plain: true });
+  
+        // pass data to template
         res.render('single-post', {
             post,
             loggedIn: req.session.loggedIn
-        });
-    })
-    .catch(err => {
+          });
+      })
+      .catch(err => {
         console.log(err);
         res.status(500).json(err);
-    });
-});
-// render the login page
-router.get('/login',(req,res)=> {
-if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-}
-res.render('login');
-
+      });
 });
 
-
-//render the sign up page
-router.get('/signup', (req,res) => {
-    if(req.session.loggedIn) {
-        res.redirecr('/');
-        return;
-
-    }
-    res.render('signup');
-});
 module.exports = router;
