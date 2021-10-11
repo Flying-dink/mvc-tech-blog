@@ -4,45 +4,45 @@ const { User } = require('../models');
 
 const userData = [
     {
-        username: "martin_bour",
-        twitter: "martinb",
-        github: "martinb",
-        email: "martin_b@gmail.com",
+        username: "kelly_Reese",
+        twitter: "kellyR",
+        github: "kellyR",
+        email: "kelly_R@gmail.com",
         password: "p@ssword1"
     },
     {
-        username: "matt_b",
-        twitter: "mathewb",
-        github: "mathewb",
-        email: "mathew_b@gmail.com",
+        username: "carl_b",
+        twitter: "carlb",
+        github: "carlb",
+        email: "carl_b@gmail.com",
         password: "p@ssword2"
     },
     {
-        username: "shaun_c",
-        twitter: "shaun",
-        github: "shaun",
-        email: "shaun_c@gmail.com",
+        username: "carol_c",
+        twitter: "carol",
+        github: "carol",
+        email: "carol_c@gmail.com",
         password: "p@ssword3"
     },
     {
-        username: "lee_n",
-        twitter: "leenorris",
-        github: "leenorris",
-        email: "lee_n@gmail.com",
+        username: "Gary_n",
+        twitter: "GaryP",
+        github: "GaryP",
+        email: "Gary_P@gmail.com",
         password: "p@ssword4"
     },
     {
-        username: "priya_r",
-        twitter: "priyaravi23",
-        github: "priyaravi23",
-        email: "priya_r@gmail.com",
+        username: "Suzanner",
+        twitter: "Suzanneri23",
+        github: "Suzanneri23",
+        email: "suzanne_r@gmail.com",
         password: "p@ssword5"
     },
     {
-        username: "pooja",
-        twitter: "pooja_w",
-        github: "pooja",
-        email: "pooja@gmail.com",
+        username: "Sydney",
+        twitter: "Sydney_w",
+        github: "Sydney",
+        email: "Sydney@gmail.com",
         password: "p@ssword6"
     }
 ]

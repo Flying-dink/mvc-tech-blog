@@ -9,17 +9,17 @@ const commentData = [
     {
         user_id: 4,
         post_id: 4,
-        comment_text: "Wow, amazing work!"
+        comment_text: "Wow, great job!"
     },
     {
         user_id: 1,
         post_id: 4,
-        comment_text: "Awesome! kudos to everyone who have contributed"
+        comment_text: "Awesome!"
     },
     {
         user_id: 3,
         post_id: 5,
-        comment_text: "We just reached a million subscribers! Fantastic!"
+        comment_text: "We love it!"
     },
     {
         user_id: 3,
@@ -29,7 +29,7 @@ const commentData = [
     {
         user_id: 3,
         post_id: 4,
-        comment_text: "This is one of our biggest and the most awaited feature. Keep up the good work!"
+        comment_text: "This is so exciting!"
     },
     {
         user_id: 5,
