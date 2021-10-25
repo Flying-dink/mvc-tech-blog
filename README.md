@@ -1,7 +1,7 @@
 # mvc-tech-blog
 
 
-https://git.heroku.com/still-fortress-27031.git
+https://still-fortress-27031.herokuapp.com/
 
 
 https://flying-dink.github.io/mvc-tech-blog/
