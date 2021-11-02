@@ -1,27 +1,56 @@
 //login form handler
+//async function loginFormHandler(event) {
+  //  event.preventDefault();
+    //Get the information for the login page
+    //const email = document.querySelector('#email-login').value.trim();
+    //const password = document.querySelector('#password-login').value.trim();
+
+    //if(email&& password) {
+      //  const response = await fetch('/api/users/login', {
+        //    method: 'post',
+          //  body: JSON.stringify({
+            //    email,
+              //  password
+            //}),
+            //headers: {'Content-Type': 'application/json'}
+
+        //});
+        //when the fetch promise is satisfied,check response status
+        //if(response.ok) {
+          //  document.location.replace('/dashboard');
+         //} else{
+           // let result = await response.json()
+            //alert(result.message)
+        //}
+    //}
+//}
+//document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+
+
+
+
 async function loginFormHandler(event) {
     event.preventDefault();
-    //Get the information for the login page
+  
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
-
-    if(email&& password) {
-        const response = await fetch('/api/users/login', {
-            method: 'post',
-            body: JSON.stringify({
-                email,
-                password
-            }),
-            headers: {'Content-Type': 'application/json'}
-
-        });
-        //when the fetch promise is satisfied,check response status
-        if(response.ok) {
-            document.location.replace('/dashboard');
-         } else{
-            let result = await response.json()
-            alert(result.message)
-        }
+  
+    if (email && password) {
+      const response = await fetch('/api/users/login', {
+        method: 'post',
+        body: JSON.stringify({
+          email,
+          password
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert(response.statusText);
+      }
     }
-}
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+  }
+
+  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
