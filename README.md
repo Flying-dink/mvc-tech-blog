@@ -15,7 +15,8 @@ To install download or clone the files from the repository and open them in vsco
 To use this program complete the istallation instructions. Then iniate the database by logging into mysql using 'npm run seed' and running SOURCE ./db/schema.sql. Finally from the root directory run 'npm start' in the command line to run the program.
 ## Screenshot
 
-![2021-10-03](https://user-images.githubusercontent.com/83742550/135740273-b98f9e2d-6e07-43bd-ba57-34fd69e6f7bb.png)
+
+(https://user-images.githubusercontent.com/83742550/135740273-b98f9e2d-6e07-43bd-ba57-34fd69e6f7bb.png)
 
 ## Contributors
 
