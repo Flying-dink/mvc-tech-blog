@@ -36,9 +36,9 @@
 // User model
 const user = require('./user');
 // Post model
-const Post = require('./Post');
+const post = require('./post');
 // Comment model
-const Comment = require('./Comment');
+const comment = require('./comment');
 
 // Create associations between the models
 // User-Post relationship
@@ -46,33 +46,33 @@ user.hasMany(Post, {
     foreignKey: 'user_id'
 });
 //Post-User relationship
-Post.belongsTo(user, {
+post.belongsTo(user, {
     foreignKey: 'user_id'
 });
 
 // Comment-User relationship
-Comment.belongsTo(user, {
+comment.belongsTo(user, {
     foreignKey: 'user_id',
     onDelete: 'cascade',
     hooks:true
 });
 
 // Comment-Post relationship
-Comment.belongsTo(Post, {
+comment.belongsTo(Post, {
     foreignKey: 'post_id',
     onDelete: 'cascade',
     hooks: true
 });
 
 // User-Comment relationsihp
-User.hasMany(Comment, {
+user.hasMany(Comment, {
     foreignKey: 'user_id',
     onDelete: 'cascade',
     hooks:true
 });
 
 // Post-Comment relationship
-Post.hasMany(Comment, {
+post.hasMany(Comment, {
     foreignKey: 'post_id',
     onDelete: 'cascade',
     hooks:true
