@@ -16,7 +16,7 @@ To use this program complete the istallation instructions. Then iniate the datab
 ## Screenshot
 
 
-(https://user-images.githubusercontent.com/83742550/135740273-b98f9e2d-6e07-43bd-ba57-34fd69e6f7bb.png)
+
 
 ## Contributors
 
